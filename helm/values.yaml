@@ -1,5 +1,5 @@
 replicas: 1
 version: v1
-dbHost:
-imageURL:
+dbHost: mysql-dev.devchan.site
+imageURL: 353654037274.dkr.ecr.us-east-1.amazonaws.com/expense/backend
 imageVersion: IMAGE_VERSION
