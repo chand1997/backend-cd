@@ -3,6 +3,7 @@ pipeline{
     parameters{
         string(name: 'version', description: 'Enter version')
     }
+    stages{
     stage("backend-cd"){
        steps{
         script{
@@ -18,5 +19,7 @@ pipeline{
         }
        }
     }
+    }
+    
 
 }
