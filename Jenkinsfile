@@ -1,7 +1,4 @@
 pipeline{
-    environment{
-
-    }
     parameters{
         string(name: 'version', description: 'Enter version')
     }
