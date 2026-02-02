@@ -1,0 +1,5 @@
+replicas: 1
+version: v1
+dbHost:
+imageURL:
+imageVersion: IMAGE_VERSION

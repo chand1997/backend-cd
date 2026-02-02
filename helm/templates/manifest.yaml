@@ -1,0 +1,51 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: backend
+  namespace: expense
+data:
+  DB_HOST: {{ .Values.dbHost }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: expense
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      namespace: expense
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: "{{.Values.imageURL}}:{{.Values.imageVersion}}"
+        envFrom:
+        - configMapRef:
+            name: backend
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: expense
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
