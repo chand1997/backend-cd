@@ -2,6 +2,7 @@ pipeline{
     agent {label "agent-1"}
     parameters{
         string(name: 'version', description: 'Enter version')
+        choice(name: 'env', choices: ['dev', 'qa', 'prod'], description: 'Pick environment')
     }
     stages{
     stage("backend-cd"){
